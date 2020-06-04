@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Note App</string>
+    <string name="title">Tittle</string>
+    <string name="note">Note</string>
+    <string name="created">Created</string>
+    <string name="last">Last</string>
+    <string name="del">Delete</string>
+    <string name="label">Label</string>
+    <string name="save">Save</string>
+    <string name="option">Option</string>
+    <string name="alarm">Alarm</string>
+    <string name="cancel">Cancel</string>
+</resources>

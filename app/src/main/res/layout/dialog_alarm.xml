@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txNgay"
+        android:text="31"
+        android:hint="Day"/>
+    <EditText
+        android:layout_toRightOf="@id/txNgay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txThang"
+        android:text="5"
+        android:hint="Month"/>
+    <EditText
+        android:layout_toRightOf="@id/txThang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txNam"
+        android:text="2020"
+        android:hint="Year"/>
+    <EditText
+        android:layout_toRightOf="@id/txNam"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txHour"
+        android:hint="H"/>
+    <EditText
+        android:layout_toRightOf="@id/txHour"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txMi"
+        android:hint="M"/>
+    <EditText
+        android:layout_toRightOf="@id/txMi"
+        android:layout_width="30dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/txSec"
+        android:hint="S"/>
+    <Button
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btCancelAlarm"
+        android:text="@string/cancel"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/txMi"/>
+    <Button
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btOKAlarm"
+        android:text="@string/save"
+        android:layout_toRightOf="@id/btCancelAlarm"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/txMi"/>
+
+</RelativeLayout>

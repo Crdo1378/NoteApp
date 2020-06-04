@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Note App</string>
+    <string name="title">Tiêu đề</string>
+    <string name="note">Ghi chú</string>
+    <string name="created">Created</string>
+    <string name="last">Last</string>
+    <string name="del">Xóa</string>
+    <string name="label">Nhãn</string>
+    <string name="save">Lưu</string>
+    <string name="option">Tùy chọn</string>
+    <string name="alarm">Nhắc nhở</string>
+    <string name="cancel">Hủy</string>
+</resources>

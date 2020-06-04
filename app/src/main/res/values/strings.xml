@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Note App</string>
+    <string name="title">Tiêu đề</string>
+    <string name="note">Ghi chú</string>
+    <string name="created">Created</string>
+    <string name="last">Last</string>
+    <string name="del">Delete</string>
+    <string name="label">Nhãn</string>
+    <string name="save">Lưu</string>
+    <string name="option">Cài đặt</string>
+    <string name="alarm">Nhắc nhở</string>
+    <string name="cancel">Cancel</string>
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>
