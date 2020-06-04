@@ -11,4 +11,12 @@
     <string name="option">Option</string>
     <string name="alarm">Alarm</string>
     <string name="cancel">Cancel</string>
+    <string name="noti_del_label">Do you want to delete Label?</string>
+    <string name="add_label">Add Label</string>
+    <string name="notification">Notification</string>
+    <string name="delSuc">Delete Success</string>
+    <string name="addSuc">Add Success</string>
+    <string name="dl_alarm_pickday">Pick day</string>
+    <string name="dl_alarm_picktime">Pick time</string>
+    <string name="dl_alarm_option">Option..</string>
 </resources>

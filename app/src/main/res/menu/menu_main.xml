@@ -7,7 +7,7 @@
         app:showAsAction="ifRoom|collapseActionView"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         android:icon="@drawable/search24px"/>
-    <item android:title="TaG"
+    <item android:title="LABEL"
         android:id="@+id/menuTabMain"
         app:showAsAction="always" />
 </menu>

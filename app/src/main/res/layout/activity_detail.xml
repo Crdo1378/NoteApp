@@ -31,15 +31,27 @@
         android:gravity="top"
         android:hint="@string/note"/>
     <TextView
+        android:visibility="invisible"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvTag_detail"
-        android:textSize="20dp"
+        android:layout_height="30dp"
+        android:id="@+id/tvAlarm_detail"
         android:textColor="#FAFAF7"
         android:layout_marginBottom="10dp"
         android:padding="5dp"
         android:background="@drawable/bg_tag"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/lnbot"/>
+    <TextView
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:id="@+id/tvTag_detail"
+        android:textColor="#FAFAF7"
+        android:layout_marginBottom="10dp"
+        android:padding="5dp"
+        android:background="@drawable/bg_tag"
+        android:layout_marginLeft="5dp"
+        app:layout_constraintLeft_toRightOf="@id/tvAlarm_detail"
         app:layout_constraintBottom_toTopOf="@id/lnbot"/>
     <LinearLayout
         android:layout_width="match_parent"

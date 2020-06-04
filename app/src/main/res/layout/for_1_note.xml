@@ -4,32 +4,36 @@
     android:background="@drawable/bg_1_note"
     android:id="@+id/layout_for_1note"
     android:layout_margin="3dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:maxHeight="150dp">
 
     <TextView
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvTitle_1note"
         android:textStyle="bold"
-        android:textSize="25dp"
+        android:textSize="20dp"
+        android:textColorHint="@color/colorHint"
         android:text="@string/title"/>
     <TextView
         android:layout_below="@+id/tvTitle_1note"
-        android:layout_margin="5dp"
+        android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tvNote_1note"
-        android:textSize="20dp"
+        android:textSize="15dp"
+        android:textColorHint="@color/colorHint"
         android:text="@string/note"/>
     <TextView
+        android:visibility="invisible"
+        android:layout_marginLeft="5dp"
         android:padding="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
         android:layout_centerVertical="true"
         android:id="@+id/tvTag_"
-        android:textSize="20dp"
         android:background="@drawable/bg_black"
         android:layout_alignParentRight="true"/>
 </RelativeLayout>

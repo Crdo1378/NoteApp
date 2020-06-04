@@ -26,7 +26,7 @@ import java.util.Locale;
 public class Adapter_1note extends RecyclerView.Adapter<Adapter_1note.MyViewHolder>{
     private final ClickListener listener;
     private final ArrayList<NoteOO> list;
-    private ArrayList<NoteOO> list_search;
+    private ArrayList<NoteOO> list_search, list_origin;
 
     public Adapter_1note(ArrayList<NoteOO> itemsList, ClickListener listener) {
         this.listener = listener;
@@ -42,14 +42,17 @@ public class Adapter_1note extends RecyclerView.Adapter<Adapter_1note.MyViewHold
         // bind layout and data etc..
         holder.tvNote.setText(list.get(position).getContentNote());
         holder.tvTitle.setText(list.get(position).getTitleNote());
-        holder.layout.setBackgroundResource(list.get(position).getColorBack());
+        holder.layout.setBackgroundResource(list.get(position).getResoureBack());
         holder.tvNote.setTextColor(list.get(position).getColorText());
         holder.tvNote.setHintTextColor(list.get(position).getColorHint());
         holder.tvTitle.setTextColor(list.get(position).getColorText());
         holder.tvTitle.setHintTextColor(list.get(position).getColorHint());
-        holder.tvTag.setText(list.get(position).getTagNote());
-        holder.tvTag.setBackgroundResource(R.drawable.bg_black);
-        holder.tvTag.setTextColor(Color.WHITE);
+        if(list.get(position).getTagNote() != null){
+            holder.tvTag.setText(list.get(position).getTagNote());
+            holder.tvTag.setBackgroundResource(R.drawable.bg_black);
+            holder.tvTag.setTextColor(Color.WHITE);
+            holder.tvTag.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override public int getItemCount() {
@@ -124,8 +127,16 @@ public class Adapter_1note extends RecyclerView.Adapter<Adapter_1note.MyViewHold
             list_search = new ArrayList<>();
             list_search.addAll(list);
         }
+        if(list_origin == null){
+            list_origin = new ArrayList<>();
+            list_origin.addAll(list_search);
+        }
         list.clear();
         if (charText.length() == 0) {
+            if(list_search.size() != list_origin.size()){
+                list_search.clear();
+                list_search.addAll(list_origin);
+            }
             list.addAll(list_search);
         } else {
             for (NoteOO wp : list_search) {

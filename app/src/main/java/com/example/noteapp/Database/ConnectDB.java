@@ -23,11 +23,13 @@ public class ConnectDB extends SQLiteOpenHelper {
     public static String note_Col_colorhint = "colorhint";
     public static String note_Col_timeLastChange = "timeLastChange";
     public static String note_Col_timeAlarm = "timeAlarm";
+    public static String note_Col_resourceBack = "resourceback";
 
     public static String create_DB =
             " CREATE TABLE " + db_Table_Note + " ( "
                     + note_Col_idNote + " INTEGER PRIMARY KEY, "
                     + note_Col_colorBack + " INTEGER, "
+                    + note_Col_resourceBack + " INTEGER, "
                     + note_Col_colorText + " INTEGER, "
                     + note_Col_colorhint + " INTEGER, "
                     + note_Col_content + " TEXT NOT NULL, "

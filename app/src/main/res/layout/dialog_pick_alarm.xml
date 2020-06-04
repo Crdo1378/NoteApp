@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/alarm"
+        android:textSize="20dp"
+        android:id="@+id/tv_alarm_picker"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textColor="#FBFBFB"
+        android:background="@color/colorPrimary"/>
+    <RelativeLayout
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_below="@id/tv_alarm_picker">
+
+        <EditText
+            android:layout_marginBottom="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/dl_alarm_pickday"
+            android:id="@+id/sp_dl_alarm_pickDay" />
+        <EditText
+            android:layout_below="@id/sp_dl_alarm_pickDay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/dl_alarm_picktime"
+            android:id="@+id/sp_dl_alarm_pickTime"
+            android:layout_marginBottom="5dp"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btSave_picker"
+            android:text="@string/save"
+            android:background="#ff0"
+            android:layout_below="@id/sp_dl_alarm_pickTime"
+            android:layout_alignParentRight="true"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btHuy_picker"
+            android:text="@string/cancel"
+            android:layout_toLeftOf="@id/btSave_picker"
+            android:layout_marginRight="35dp"
+            android:background="#E9ECE8"
+            android:layout_below="@id/sp_dl_alarm_pickTime" />
+    </RelativeLayout>
+
+</RelativeLayout>

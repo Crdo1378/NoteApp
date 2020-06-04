@@ -6,7 +6,7 @@ import java.util.Date;
 public class NoteOO implements Serializable {
     private String  tagNote, contentNote, titleNote;
     private String timeNote, timeLastChange, timeAlarm;
-    private int colorBack, colorText, colorHint, idNote;
+    private int colorBack, resoureBack, colorText, colorHint, idNote;
 
     public String getTimeNote() {
         return timeNote;
@@ -89,4 +89,11 @@ public class NoteOO implements Serializable {
     }
 
 
+    public int getResoureBack() {
+        return resoureBack;
+    }
+
+    public void setResoureBack(int resoureBack) {
+        this.resoureBack = resoureBack;
+    }
 }

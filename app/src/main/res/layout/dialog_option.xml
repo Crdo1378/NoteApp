@@ -1,75 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="320dp"
-    android:layout_height="150dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:viewBindingIgnore="true"
-    android:padding="7dp"
     android:gravity="center_vertical"
     android:orientation="vertical">
 
     <TextView
-        android:layout_marginBottom="3dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/option"
+        android:textColor="#FAFAFA"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvXoa_option"
-        android:drawableLeft="@drawable/ic_delete_black_24dp"
-        android:drawablePadding="5dp"
-        android:text="@string/del"
-        android:textSize="20dp"/>
-    <TextView
-        android:layout_marginBottom="3dp"
-        android:drawableLeft="@drawable/ic_label_outline_black_24dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvLabel_option"
-        android:textSize="20dp"
-        android:drawablePadding="5dp"
-        android:text="@string/label"/>
-    <TextView
-        android:layout_marginBottom="3dp"
-        android:id="@+id/tvAlarm"
-        android:text="Alarm"
-        android:drawablePadding="5dp"
-        android:textSize="20dp"
-        android:drawableLeft="@drawable/ic_add_alarm_black_24dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:orientation="vertical"
+        android:layout_marginLeft="7dp">
+
+        <TextView
+            android:layout_marginBottom="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvXoa_option"
+            android:drawableLeft="@drawable/ic_delete_black_24dp"
+            android:drawablePadding="5dp"
+
+            android:text="@string/del" />
+        <TextView
+            android:layout_marginBottom="3dp"
+            android:drawableLeft="@drawable/ic_label_outline_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvLabel_option"
+            android:drawablePadding="5dp"
+            android:text="@string/label"/>
+        <TextView
+            android:layout_marginBottom="3dp"
+            android:id="@+id/tvAlarm"
+            android:text="Alarm"
+            android:drawablePadding="5dp"
+            android:drawableLeft="@drawable/ic_add_alarm_black_24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
     <LinearLayout
         android:layout_gravity="center_horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:id="@+id/btwhite"
             android:background="@drawable/ic_while_24dp"/>
 
         <ImageButton
             android:id="@+id/btBlue"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:background="@drawable/ic_blue_24dp" />
 
         <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:id="@+id/btBlack"
             android:background="@drawable/ic_circle_black_24dp"/>
         <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:id="@+id/btpurple"
             android:background="@drawable/ic_purple_24dp"/>
         <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:id="@+id/btyellow"
             android:background="@drawable/ic_yellow_24dp"/>
         <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:id="@+id/btRed"
             android:background="@drawable/ic_circle_red_24dp"/>
     </LinearLayout>

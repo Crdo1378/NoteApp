@@ -1,27 +1,29 @@
 package com.example.noteapp;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SearchView;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.StringDef;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.noteapp.Adapter.Adapter_1note;
 import com.example.noteapp.Adapter.ClickListener;
@@ -31,9 +33,7 @@ import com.example.noteapp.Object.Label;
 import com.example.noteapp.Object.NoteOO;
 import com.example.noteapp.databinding.ActivityMainBinding;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,12 +52,16 @@ public class MainActivity extends AppCompatActivity {
     private Label labelAtTime;
     private ArrayAdapter arrayAdapter;
 
+    //backtoExit
+    private long backPress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
 
         strLabel = new ArrayList<>();
         listNote = new ArrayList<>();
@@ -72,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("listLast", listNote.get(0).getIdNote());
                 intent.putExtra("listLabel", chuoiLabel);
                 startActivity(intent);
+                MainActivity.this.finish();
             }
 
             @Override
@@ -97,9 +102,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DetailActivity.class);
                 intent.putExtra("checkNew", true);
-                intent.putExtra("listSize", listNote.size());
                 intent.putExtra("listLabel", chuoiLabel);
+                if(!listNote.isEmpty()){
+                    intent.putExtra("listLast", listNote.get(0).getIdNote());
+                }
+                else {
+                    intent.putExtra("listLast", 0);
+                }
                 startActivity(intent);
+                MainActivity.this.finish();
             }
         });
     }
@@ -136,10 +147,22 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        if(backPress + 2000 > System.currentTimeMillis()){
+            super.onBackPressed();
+            finish();
+            return;
+        }
+        else {
+            Toast.makeText(this, "Press again to exit", Toast.LENGTH_SHORT).show();
+        }
+        backPress = System.currentTimeMillis();
+    }
+
     private void openTab() {
         //Toast.makeText(this, "TAB", Toast.LENGTH_SHORT).show();
         final Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_label_tab);
         dialog.show();
 
@@ -184,6 +207,43 @@ public class MainActivity extends AppCompatActivity {
                 dialog.cancel();
             }
         });
+
+        lvLabel.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
+
+        lvLabel.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+
+                AlertDialog.Builder alertDel = new AlertDialog.Builder(MainActivity.this);
+                alertDel.setTitle(getResources().getString(R.string.notification));
+                alertDel.setMessage(getResources().getString(R.string.noti_del_label));
+                alertDel.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                alertDel.setPositiveButton(getResources().getString(R.string.del), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        LabelDB labelDB = new LabelDB(MainActivity.this);
+                        labelDB.xoaLabel(strLabel.get(position));
+                        labelDB.closeDB();
+                        strLabel = listLBFromDB();
+                        Toast.makeText(MainActivity.this, getResources().getString(R.string.delSuc), Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alertDialog = alertDel.create();
+                alertDialog.show();
+                return true;
+            }
+        });
     }
 
     private ArrayList<NoteOO> listFromDB(){
@@ -195,14 +255,15 @@ public class MainActivity extends AppCompatActivity {
                 noteAtTime = new NoteOO();
                 noteAtTime.setIdNote(cursor.getInt(0));
                 noteAtTime.setColorBack(cursor.getInt(1));
-                noteAtTime.setColorText(cursor.getInt(2));
-                noteAtTime.setColorHint(cursor.getInt(3));
-                noteAtTime.setContentNote(cursor.getString(4));
-                noteAtTime.setTagNote(cursor.getString(5));
-                noteAtTime.setTitleNote(cursor.getString(6));
-                noteAtTime.setTimeNote(cursor.getString(7));
-                noteAtTime.setTimeLastChange(cursor.getString(8));
-                noteAtTime.setTimeAlarm(cursor.getString(9));
+                noteAtTime.setResoureBack(cursor.getInt(2));
+                noteAtTime.setColorText(cursor.getInt(3));
+                noteAtTime.setColorHint(cursor.getInt(4));
+                noteAtTime.setContentNote(cursor.getString(5));
+                noteAtTime.setTagNote(cursor.getString(6));
+                noteAtTime.setTitleNote(cursor.getString(7));
+                noteAtTime.setTimeNote(cursor.getString(8));
+                noteAtTime.setTimeLastChange(cursor.getString(9));
+                noteAtTime.setTimeAlarm(cursor.getString(10));
                 listNote.add(noteAtTime);
             }
         }
@@ -227,4 +288,5 @@ public class MainActivity extends AppCompatActivity {
         arrayAdapter.notifyDataSetChanged();;
         return strLabel;
     }
+
 }

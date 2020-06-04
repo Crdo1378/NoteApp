@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Note App</string>
+    <string name="app_name">Ghi chú</string>
     <string name="title">Tiêu đề</string>
     <string name="note">Ghi chú</string>
     <string name="created">Created</string>
@@ -11,4 +11,12 @@
     <string name="option">Tùy chọn</string>
     <string name="alarm">Nhắc nhở</string>
     <string name="cancel">Hủy</string>
+    <string name="noti_del_label">Bạn có muốn xóa nhãn không?</string>
+    <string name="add_label">Thêm nhãn</string>
+    <string name="notification">Thông báo</string>
+    <string name="delSuc">Xóa thành công</string>
+    <string name="addSuc">Thêm thành công</string>
+    <string name="dl_alarm_pickday">Chọn ngày</string>
+    <string name="dl_alarm_picktime">Chọn thời gian</string>
+    <string name="dl_alarm_option">Tùy chỉnh..</string>
 </resources>

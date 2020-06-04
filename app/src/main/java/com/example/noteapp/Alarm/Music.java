@@ -1,5 +1,7 @@
 package com.example.noteapp.Alarm;
 
+import android.app.AlarmManager;
+import android.app.NotificationManager;
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -49,6 +51,8 @@ public class Music extends Service {
         if(nhan.equals("off")){
             mediaPlayer.stop();
             nhan.equals("stop");
+            NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            manager.cancel(AlarmReceiver.NOTIFICATION_ID);
         }
         return START_NOT_STICKY;
     }

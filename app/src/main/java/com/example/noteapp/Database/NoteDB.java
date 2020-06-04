@@ -31,6 +31,7 @@ public class NoteDB {
         values.put(ConnectDB.note_Col_colorhint, note.getColorHint());
         values.put(ConnectDB.note_Col_colorText, note.getColorText());
         values.put(ConnectDB.note_Col_colorBack, note.getColorBack());
+        values.put(ConnectDB.note_Col_resourceBack, note.getResoureBack());
         values.put(ConnectDB.note_Col_content, note.getContentNote());
         values.put(ConnectDB.note_Col_idNote, note.getIdNote());
         values.put(ConnectDB.note_Col_tag, note.getTagNote());
@@ -47,6 +48,7 @@ public class NoteDB {
         Cursor cursor = null;
         String[] col = {ConnectDB.note_Col_idNote,
                 ConnectDB.note_Col_colorBack,
+                ConnectDB.note_Col_resourceBack,
                 ConnectDB.note_Col_colorText,
                 ConnectDB.note_Col_colorhint,
                 ConnectDB.note_Col_content,
@@ -67,6 +69,7 @@ public class NoteDB {
         values.put(ConnectDB.note_Col_colorhint, note.getColorHint());
         values.put(ConnectDB.note_Col_colorText, note.getColorText());
         values.put(ConnectDB.note_Col_colorBack, note.getColorBack());
+        values.put(ConnectDB.note_Col_resourceBack, note.getResoureBack());
         values.put(ConnectDB.note_Col_content, note.getContentNote());
         values.put(ConnectDB.note_Col_idNote, note.getIdNote());
         values.put(ConnectDB.note_Col_tag, note.getTagNote());

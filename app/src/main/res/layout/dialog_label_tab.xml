@@ -1,28 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="250dp"
-    android:padding="5dp"
     android:layout_centerHorizontal="true"
     android:layout_height="match_parent">
 
-    <EditText
-        android:layout_width="200dp"
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txAddLb"
-        android:hint="Thêm nhãn"
-        android:background="@android:color/transparent"
-        android:drawablePadding="5dp"
-        android:textSize="20dp"/>
+        android:text="@string/label"
+        android:gravity="center_horizontal"
+        android:textStyle="bold"
+        android:id="@+id/tvtitle_Label"
+        android:textColor="#FBFBFB"
+        android:layout_marginBottom="3dp"
+        android:textSize="20dp"
+        android:background="@color/colorPrimary" />
+
+    <LinearLayout
+        android:layout_marginLeft="5dp"
+        android:gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/llAddLabel"
+        android:layout_below="@id/tvtitle_Label"
+        android:orientation="horizontal">
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/txAddLb"
+            android:hint="@string/add_label"
+            android:background="@android:color/transparent"
+            android:drawablePadding="5dp"
+            android:layout_below="@id/tvtitle_Label"/>
+        <ImageButton
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/btAddLabel"
+            android:layout_toRightOf="@id/txAddLb"
+            android:background="@drawable/ic_check_circle_black_24dp"/>
+    </LinearLayout>
+
     <ListView
-        android:layout_below="@id/txAddLb"
+        android:padding="5dp"
+        android:layout_below="@id/llAddLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/lvTabLabel"/>
-    <ImageButton
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:id="@+id/btAddLabel"
-        android:layout_toRightOf="@id/txAddLb"
-        android:background="@drawable/ic_check_circle_black_24dp"/>
 
 </RelativeLayout>
