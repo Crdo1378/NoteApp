@@ -19,4 +19,7 @@
     <string name="dl_alarm_pickday">Chọn ngày</string>
     <string name="dl_alarm_picktime">Chọn thời gian</string>
     <string name="dl_alarm_option">Tùy chỉnh..</string>
+    <string name="labelMg">Quản lý nhãn</string>
+    <string name="font">Kiểu chữ</string>
+    <string name="search">Tìm kiếm</string>
 </resources>

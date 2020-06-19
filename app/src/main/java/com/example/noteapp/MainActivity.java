@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -20,9 +19,9 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.StringDef;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.noteapp.Adapter.Adapter_1note;
@@ -62,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        TypefaceUtil.overrideFont(getApplicationContext(), "fonts/roboto_regular.ttf", "assets/allan.ttf"); // font from assets: "assets/fonts/Roboto-Regular.ttf
 
         strLabel = new ArrayList<>();
         listNote = new ArrayList<>();

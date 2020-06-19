@@ -19,4 +19,7 @@
     <string name="dl_alarm_pickday">Pick day</string>
     <string name="dl_alarm_picktime">Pick time</string>
     <string name="dl_alarm_option">Option..</string>
+    <string name="labelMg">Label</string>
+    <string name="font">Font</string>
+    <string name="search">Search</string>
 </resources>

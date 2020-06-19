@@ -9,8 +9,9 @@
         android:roundIcon="@drawable/note_48"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
+        <activity
+            android:name=".DetailActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".MainActivity"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>

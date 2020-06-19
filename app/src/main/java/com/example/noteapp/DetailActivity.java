@@ -10,6 +10,7 @@ import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +33,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.example.noteapp.Alarm.AlarmReceiver;
 import com.example.noteapp.Database.NoteDB;
@@ -41,6 +43,8 @@ import com.example.noteapp.databinding.ActivityDetailBinding;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+
+import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -52,7 +56,6 @@ public class DetailActivity extends AppCompatActivity {
     private int resouceBack;
     private int colorHint;
     private int colorText;
-    private ArrayList<NoteOO> noteList;
     private NoteDB noteDB;
     private NoteOO note;
     private ArrayList<String> label;
@@ -71,6 +74,10 @@ public class DetailActivity extends AppCompatActivity {
         binding = ActivityDetailBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+        //getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         createNotiAlarm();
 
         label = new ArrayList<>();
@@ -138,7 +145,12 @@ public class DetailActivity extends AppCompatActivity {
             case R.id.menuPost_alarm:
                 dialogAlarm();
                 return true;
-
+            case android.R.id.home:
+                Intent intent = new Intent(DetailActivity.this, MainActivity.class);
+                startActivity(intent);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                DetailActivity.this.finish();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -157,38 +169,41 @@ public class DetailActivity extends AppCompatActivity {
         Button btSave = dialogAlarm.findViewById(R.id.btSave_picker);
         final Button btCancel = dialogAlarm.findViewById(R.id.btHuy_picker);
 
-        String strDay[] = {alarmDay, getResources().getString(R.string.dl_alarm_option)};
-        String strTime[] = {alarmTime, getResources().getString(R.string.dl_alarm_option)};
 
         txDay.setText(alarmDay);
         txTime.setText(alarmTime);
 
+
+        final Calendar calendarDate = Calendar.getInstance();
         txDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DatePickerDialog datePickerDialog = new DatePickerDialog(DetailActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        calendar.set(year, month, dayOfMonth);
-                        alarmDay = simpleDateFormat.format(calendar.getTime());
+                        calendarDate.set(year, month, dayOfMonth);
+                        alarmDay = simpleDateFormat.format(calendarDate.getTime());
                         txDay.setText(alarmDay);
+                        Log.i("Crdo", "time: " + calendarDate.getTimeInMillis());
                     }
-                },calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DATE));
+                },calendarDate.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DATE));
                 datePickerDialog.show();
             }
         });
 
+        final Calendar calendarTime = Calendar.getInstance();
         txTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(DetailActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        calendar.set(0,0,0,hourOfDay,minute);
-                        alarmTime = calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE) + ":" + 0;
+                        calendarTime.set(calendarDate.get(Calendar.YEAR),calendarDate.get(Calendar.MONTH), calendarDate.get(Calendar.DATE),hourOfDay,minute);
+                        alarmTime = calendarTime.get(Calendar.HOUR_OF_DAY) + ":" + calendarTime.get(Calendar.MINUTE) + ":" + 0;
                         txTime.setText(alarmTime);
+                        Log.i("Crdo", "time: " + calendarTime.getTimeInMillis());
                     }
-                }, calendar.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE), true);
+                }, calendarTime.get(Calendar.HOUR_OF_DAY),calendar.get(Calendar.MINUTE), true);
                 timePickerDialog.show();
             }
         });
@@ -199,6 +214,18 @@ public class DetailActivity extends AppCompatActivity {
                 binding.tvAlarmDetail.setText(alarmDay + " " + alarmTime);
                 binding.tvAlarmDetail.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_add_alarm_black_24dp, 0, 0, 0);
                 binding.tvAlarmDetail.setVisibility(View.VISIBLE);
+
+                alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+                final Intent intent1 = new Intent(DetailActivity.this, AlarmReceiver.class);
+
+                intent1.putExtra("stop", "on");
+                pendingIntent = PendingIntent.getBroadcast(DetailActivity.this,
+                        0, intent1, pendingIntent.FLAG_UPDATE_CURRENT);
+                alarmManager.set(AlarmManager.RTC_WAKEUP, calendarTime.getTimeInMillis() - calendarTime.get(Calendar.SECOND)*1000, pendingIntent);
+                Log.i("Crdo", String.valueOf(calendarTime.getTimeInMillis()));
+                Log.i("Crdo", String.valueOf(calendarTime.getTimeInMillis() - System.currentTimeMillis()));
+                Log.i("Crdo", String.valueOf(System.currentTimeMillis()));
+
                 dialogAlarm.cancel();
             }
         });
@@ -213,6 +240,7 @@ public class DetailActivity extends AppCompatActivity {
 
     private void changeNote() {
         note.setTagNote(binding.tvTagDetail.getText().toString());
+        note.setTimeLastChange(simpleDateFormat.format(calendar.getTime()));
         if (!note.getContentNote().equals(binding.txNote.toString())) {
             note.setContentNote(binding.txNote.getText().toString());
         }
@@ -317,6 +345,7 @@ public class DetailActivity extends AppCompatActivity {
                 binding.txTitle.setHintTextColor(getResources().getColor(R.color.colorHint));
                 binding.txNote.setHintTextColor(getResources().getColor(R.color.colorHint));
                 change_color = true;
+
             }
         });
         btRed.setOnClickListener(new View.OnClickListener() {

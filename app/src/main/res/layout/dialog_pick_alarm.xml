@@ -22,11 +22,11 @@
         android:layout_below="@id/tv_alarm_picker">
 
         <EditText
-            android:layout_marginBottom="5dp"
+            android:id="@+id/sp_dl_alarm_pickDay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/dl_alarm_pickday"
-            android:id="@+id/sp_dl_alarm_pickDay" />
+            android:layout_marginBottom="5dp"
+            android:hint="@string/dl_alarm_pickday" />
         <EditText
             android:layout_below="@id/sp_dl_alarm_pickDay"
             android:layout_width="match_parent"

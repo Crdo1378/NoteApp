@@ -49,4 +49,6 @@ dependencies {
     //notification
     //noinspection GradleCompatible
     implementation "com.android.support:support-compat:28.0.0"
+    //add font
+    implementation 'me.anwarshahriar:calligrapher:1.0'
 }

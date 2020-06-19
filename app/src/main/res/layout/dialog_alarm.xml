@@ -23,12 +23,14 @@
         android:id="@+id/txNam"
         android:text="2020"
         android:hint="Year"/>
+
     <EditText
-        android:layout_toRightOf="@id/txNam"
+        android:id="@+id/txHour"
         android:layout_width="30dp"
         android:layout_height="wrap_content"
-        android:id="@+id/txHour"
-        android:hint="H"/>
+        android:layout_toRightOf="@id/txNam"
+        android:fontFamily="sans-serif"
+        android:hint="H" />
     <EditText
         android:layout_toRightOf="@id/txHour"
         android:layout_width="30dp"

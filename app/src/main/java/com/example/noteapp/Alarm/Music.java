@@ -18,18 +18,7 @@ import com.example.noteapp.R;
 
 public class Music extends Service {
 
-    public static final String ACTION_PLAY = "action_play";
-    public static final String ACTION_PAUSE = "action_pause";
-    public static final String ACTION_REWIND = "action_rewind";
-    public static final String ACTION_FAST_FORWARD = "action_fforward";
-    public static final String ACTION_NEXT = "action_next";
-    public static final String ACTION_PREVIOUS = "action_previous";
-    public static final String ACTION_STOP = "action_stop";
-
     private MediaPlayer mediaPlayer;
-    private MediaSession mediaSession;
-    private MediaSessionManager mediaSessionManager;
-    private MediaController mediaController;
 
     @Nullable
     @Override
@@ -43,7 +32,7 @@ public class Music extends Service {
         String nhan = intent.getExtras().getString("stop");
         Log.i("Crdo", "Music " + nhan);
         if(nhan.equals("on")){
-            mediaPlayer = MediaPlayer.create(this, R.raw.test);
+            mediaPlayer = MediaPlayer.create(this, R.raw.wavinflag);
             mediaPlayer.start();
             Toast.makeText(this, "Music Playing", Toast.LENGTH_SHORT).show();
             nhan.equals("off");
